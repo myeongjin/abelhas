@@ -2,6 +2,7 @@
 -- Uses gnuplot to make an animated gif showing the evolution of the
 -- particles in an optimization. This example requires gnuplot 4.2.0
 -- with gif animation support.
+-- NOTE: Requires io module (standalone Luau only, not for Roblox)
 --
 -- Maximizes the function:  cos(x^2 + y^2) - x^2/5 - y^2/5 
 -- Search space: -3.0 -- 3.0
@@ -10,9 +11,14 @@
 -- allow a better visualization. Try 'param1.lua' for a better version.
 --
 
-local pso = require("pso")
+local pso = require("../pso")
 
-math.randomseed(os.time())      -- Seeds the pseudo-random number generator
+if not io or not io.open then
+    error("gnuplot.lua requires io module (standalone Luau only)")
+end
+
+local seed = (os and os.time and os.time()) or (typeof(tick) == "function" and math.floor(tick())) or 12345
+math.randomseed(seed)
 
 local swarm = pso.new(2)        -- Creates a new swarm with 2 dimensions
 swarm:setLimits(-3.0, 3.0)      -- Search space

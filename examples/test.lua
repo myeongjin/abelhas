@@ -1,12 +1,14 @@
-
 -- Minimizes |x-200| + |y-200|
 -- Search space: -5000 to +5000
+-- Luau compatible (standalone & Roblox)
+-- Run: luau test.lua (from examples/ dir) or luau examples/test.lua (from project root)
 
-local pso = require("pso")
+local pso = require("../pso")
 
-math.randomseed(os.time())
+local seed = (os and os.time and os.time()) or (typeof(tick) == "function" and math.floor(tick())) or 12345
+math.randomseed(seed)
 
-swarm = pso.new(2)
+local swarm = pso.new(2)
 swarm:setLimits(-5000.0, 5000.0)
 swarm:setFitnessFunction(function(x, y)
   return -math.abs(x-200) - math.abs(y-200)

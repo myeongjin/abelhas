@@ -6,7 +6,7 @@
 -- inspired by the weasel example by Richard Dawkins in The Blind Watchmaker.
 --
 
-local pso = require("pso")
+local pso = require("../pso")
 
 local str = "Lua is cool!"                      -- The string
 -- local str = "As I said before, Lua is cool!" -- A harder example (248 bits)
@@ -40,7 +40,8 @@ local function objfunc(...)
 end
 
 
-math.randomseed(os.time())
+local seed = (os and os.time and os.time()) or (typeof(tick) == "function" and math.floor(tick())) or 12345
+math.randomseed(seed)
 
 local swarm = pso.new(#str)
 swarm:setFitnessFunction(objfunc)

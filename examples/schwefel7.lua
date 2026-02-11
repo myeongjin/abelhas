@@ -1,4 +1,3 @@
-
 -- Optimizes the Schwefel's function 7 - Another Abelhas PSO example.
 --
 --          n            
@@ -12,9 +11,10 @@
 -- Search space: -512 to +512
 
 
-local pso = require("pso")
+local pso = require("../pso")
 
-math.randomseed(os.time())
+local seed = (os and os.time and os.time()) or (typeof(tick) == "function" and math.floor(tick())) or 12345
+math.randomseed(seed)
 
 local swarm = pso.new(5)        -- Number of dimensions.
 

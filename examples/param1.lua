@@ -9,9 +9,10 @@
 -- Try 'gnuplot.lua' for a plotting version.
 --
 
-local pso = require("pso")
+local pso = require("../pso")
 
-math.randomseed(os.time())      -- Seeds the pseudo-random number generator
+local seed = (os and os.time and os.time()) or (typeof(tick) == "function" and math.floor(tick())) or 12345
+math.randomseed(seed)
 
 local swarm = pso.new(2)        -- Creates a new swarm with 2 dimensions
 swarm:setLimits(-3.0, 3.0)      -- Search space

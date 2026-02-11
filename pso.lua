@@ -1,4 +1,4 @@
---- PSO - A Lua module for particle swarm optmization.
+--- PSO - A Luau module for particle swarm optimization.
 --- (c) 2005-2012 Alexandre Erwin Ittner <alexandre@ittner.com.br>
 --- For more information, see: http://ittner.github.com/abelhas/
 ---
@@ -36,7 +36,7 @@ M.TERM_CONVERGED = 1
 M.TERM_MAX_ITERATIONS = 2
 M.TERM_MAX_STAGNATION = 3
 
-local unpack = unpack or table.unpack
+local unpack = table.unpack
 
 
 
@@ -46,7 +46,7 @@ local unpack = unpack or table.unpack
 --- Constructor. Returns a new swarm with the given number of dimensions.
 ---
 
-function M.new(dims)
+function M.new(dims: number)
     local sw = {
         fitfunc = nil,      -- Fitness function
         dims = dims,        -- Number of dimensions
@@ -64,7 +64,7 @@ function M.new(dims)
         maxstag = nil,      -- Maximum fitness stagnation
         gbest = nil,        -- Index of the best particle in the swarm
         parts = {},         -- Particles
-        nbhoook = nil,      -- New best hook
+        nbhook = nil,       -- New best hook
         replhook = nil,     -- Replacement hook
         iterhook = nil      -- Iteration hook
     }
@@ -79,7 +79,7 @@ end
 
 -- Rounds the number 'n' to 'p' decimal places.
 local math_floor, math_ceil = math.floor, math.ceil
-local function round(n, p)
+local function round(n: number, p: number?): number
     if not p then
         return n
     end
@@ -94,13 +94,13 @@ end
 -- Returns the number 'b' if it is within the range [a,c]; otherwise, 
 -- returns a or c
 local math_max, math_min = math.max, math.min
-local function range(a, b, c)
+local function range(a: number, b: number, c: number): number
     return math_max(a, math_min(b, c))
 end
 
 
 -- Implements a continuous and closed space between 'min' and 'max'
-local function cspace(min, x, max)
+local function cspace(min: number, x: number, max: number): number
     if (min <= x) and (x <= max) then
         return x
     else
@@ -344,9 +344,8 @@ end
 --- Returns the number of decimal places used to round up the fitness values,
 --- or 'nil' if this feature is not used. 
 ---
-function MT.setFitnessRouding(self, decs)
-    assert(decs > 0, "Bad number of decimal places.")
-    self.fitr = decs
+function MT.getFitnessRounding(self)
+    return self.fitr
 end
 
 
