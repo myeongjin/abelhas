@@ -8,13 +8,13 @@
 -- Search space: -3.0 -- 3.0
 --
 -- WARNING! It should be noted that the optmization was slowed down to
--- allow a better visualization. Try 'param1.lua' for a better version.
+-- allow a better visualization. Try 'param1.luau' for a better version.
 --
 
 local pso = require("../pso")
 
 if not io or not io.open then
-    error("gnuplot.lua requires io module (standalone Luau only)")
+    error("gnuplot.luau requires io module (standalone Luau only)")
 end
 
 local seed = (os and os.time and os.time()) or (typeof(tick) == "function" and math.floor(tick())) or 12345
@@ -55,7 +55,7 @@ local fp = io.open("particles.gnuplot", "w")
 assert(fp, "Failed to open plotfile.")
 
 fp:write [[
-# Lua Abelhas optimization example data. Generated with gnuplot.lua
+# Luau Abelhas optimization example data. Generated with gnuplot.luau
 set term gif animate transparent opt delay 25 size 400,300 x000000
 set output 'particles.gif'
 unset title
@@ -74,5 +74,3 @@ for i = 1, iter do
 end
 
 fp:close()
-
-

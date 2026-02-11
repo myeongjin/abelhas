@@ -6,7 +6,7 @@
 --
 --
 -- This function converges quickly to a near-best and slowy to the best.
--- Try 'gnuplot.lua' for a plotting version.
+-- Try 'gnuplot.luau' for a plotting version.
 --
 
 local pso = require("../pso")
@@ -32,4 +32,3 @@ end)
 
 local ret, fit, reason, iter = swarm:run()
 print("Done", ret[1], ret[2], fit, reason, iter)
-

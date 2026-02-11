@@ -25,7 +25,7 @@ build = {
   type = "none",
   install = {
     lua = {
-      ["pso"] = "pso.lua",
+      ["pso"] = "pso.luau",
     }
   }
 }

@@ -1,5 +1,4 @@
-
--- cool.lua - a example for PSO. 
+-- cool.luau - a example for PSO.
 --
 -- This program tries to write "Lua is cool!" by swapping bytes; It features
 -- a discrete search in a space of 256^12 possibilities (96 bits) and was
@@ -61,4 +60,3 @@ swarm:setNewBestHook(function(...) print(arconcat({...})) end)
 
 local ret, fit, reason, iter = swarm:run()
 print("Done:", arconcat(ret), fit, reason, iter)
-

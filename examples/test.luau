@@ -1,7 +1,7 @@
 -- Minimizes |x-200| + |y-200|
 -- Search space: -5000 to +5000
 -- Luau compatible (standalone & Roblox)
--- Run: luau test.lua (from examples/ dir) or luau examples/test.lua (from project root)
+-- Run: luau test.luau (from examples/ dir) or luau examples/test.luau (from project root)
 
 local pso = require("../pso")
 
@@ -24,4 +24,3 @@ swarm:setMaxStagnation(300)
 
 local ret, fit, reason, iter = swarm:run()
 print(ret[1], ret[2], fit, reason, iter)
-

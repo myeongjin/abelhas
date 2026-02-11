@@ -48,5 +48,3 @@ for i = 1, #ret do
     print(i, ret[i])
 end
 print(fit, reason, iter)
-
-
